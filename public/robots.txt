@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Don't index transient/utility routes (no SEO value, avoids crawl waste)
+Disallow: /search
+Disallow: /search/
+Disallow: /movies/search
+Disallow: /random
+
+# Let search engines crawl the streaming pages' metadata but they hold no
+# unique indexable text, so we keep them out of the index to focus crawl budget
+# on the rich info pages instead.
+Disallow: /watch/
+Disallow: /movies/watch/
+
+# Allow all major bots full speed (no crawl-delay = faster discovery)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://offanime.cc/sitemap.xml
