@@ -1,0 +1,59 @@
+/* Movie spotlight nav buttons — placed on the right, stacked, mid-height. */
+.movie-spotlight-nav {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(10, 10, 15, 0.5);
+  backdrop-filter: blur(14px);
+  color: #fff;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.movie-spotlight-nav:hover {
+  background: #a855f7;
+  border-color: #a855f7;
+  transform: scale(1.06);
+}
+
+.movie-spotlight-nav:active {
+  transform: scale(0.95);
+}
+
+/* Pagination dots styled to match the purple movie theme. */
+.movie-spotlight .swiper-pagination {
+  bottom: 18px !important;
+  text-align: left;
+  padding-left: 48px;
+}
+
+@media (max-width: 768px) {
+  .movie-spotlight .swiper-pagination {
+    padding-left: 24px;
+  }
+}
+
+@media (max-width: 575px) {
+  .movie-spotlight .swiper-pagination {
+    padding-left: 16px;
+    bottom: 10px !important;
+  }
+}
+
+.movie-spotlight .swiper-pagination-bullet {
+  width: 7px;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.4);
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.movie-spotlight .swiper-pagination-bullet-active {
+  width: 26px;
+  border-radius: 999px;
+  background: #a855f7;
+}

@@ -1,0 +1,7 @@
+# Cloudflare Pages SPA fallback (same proven rule the anime-only production
+# site already uses on Cloudflare). On Cloudflare Pages, real files in the
+# build output — including /sitemap.xml, /sitemap-*.xml and /robots.txt —
+# are ALWAYS served before this rule, so they still return correct XML/text.
+# We deliberately keep this file to a single rule: extra/placeholder rules can
+# make Cloudflare misbehave (the cause of the previous blank screen).
+/*    /index.html    200
