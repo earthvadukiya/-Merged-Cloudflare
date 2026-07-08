@@ -1,0 +1,129 @@
+.spotlight {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.spotlight-overlay {
+  background: linear-gradient(
+    90deg,
+    #0a0a0a 0%,
+    rgba(10, 10, 10, 0.7) 35%,
+    rgba(10, 10, 10, 0) 65%
+  ),
+  linear-gradient(
+    to top,
+    #0a0a0a 0%,
+    rgba(10, 10, 10, 0.7) 20%,
+    rgba(10, 10, 10, 0) 50%
+  );
+  pointer-events: none;
+}
+
+.banner-bg-image {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+/* Smooth crossfade when the low-res anime banner upgrades to the TMDB backdrop */
+@keyframes bannerFade {
+  from {
+    opacity: 0;
+    transform: translateZ(0) scale(1.04);
+  }
+  to {
+    opacity: 1;
+    transform: translateZ(0) scale(1);
+  }
+}
+
+/* Slow cinematic Ken-Burns drift on the active spotlight image (premium feel) */
+@keyframes kenBurns {
+  0% {
+    transform: translateZ(0) scale(1.06) translate(0, 0);
+  }
+  100% {
+    transform: translateZ(0) scale(1.12) translate(-1.5%, -1%);
+  }
+}
+
+.spotlight .banner-bg-image {
+  animation:
+    bannerFade 0.8s cubic-bezier(0.22, 1, 0.36, 1) both,
+    kenBurns 18s ease-out 0.8s forwards;
+}
+
+/* Spotlight text content rises softly into place */
+@keyframes spotlightRise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.spotlight-rise {
+  animation: spotlightRise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spotlight .banner-bg-image,
+  .spotlight-rise {
+    animation: none !important;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .spotlight-overlay {
+    background: linear-gradient(
+      90deg,
+      #0a0a0a 0%,
+      rgba(10, 10, 10, 0.7) 35%,
+      rgba(10, 10, 10, 0) 65%
+    ),
+    linear-gradient(
+      to top,
+      #0a0a0a 0%,
+      rgba(10, 10, 10, 0.7) 20%,
+      rgba(10, 10, 10, 0) 50%
+    );
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .spotlight-overlay {
+    background: linear-gradient(
+      90deg,
+      #0a0a0a 0%,
+      rgba(10, 10, 10, 0.7) 35%,
+      rgba(10, 10, 10, 0) 65%
+    ),
+    linear-gradient(
+      to top,
+      #0a0a0a 0%,
+      rgba(10, 10, 10, 0.7) 20%,
+      rgba(10, 10, 10, 0) 50%
+    );
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .spotlight-overlay {
+    background: linear-gradient(
+      90deg,
+      #0a0a0a 0%,
+      rgba(10, 10, 10, 0.7) 35%,
+      rgba(10, 10, 10, 0) 65%
+    ),
+    linear-gradient(
+      to top,
+      #0a0a0a 0%,
+      rgba(10, 10, 10, 0.7) 20%,
+      rgba(10, 10, 10, 0) 50%
+    );
+  }
+}

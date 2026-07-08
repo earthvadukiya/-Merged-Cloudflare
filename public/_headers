@@ -1,0 +1,33 @@
+# Cloudflare Pages headers — security hardening + content types + caching.
+# This file is Cloudflare-safe (ignored by other hosts).
+
+# --- Security headers applied to every page on the site ----------------------
+# These are the realistic, non-breaking hardening measures for a streaming site
+# that legitimately embeds many third-party video iframes. They do NOT (and
+# cannot) hide network requests from DevTools — nothing can — but they protect
+# users from clickjacking, MIME sniffing, referrer leakage, and downgrade attacks.
+/*
+  # Force HTTPS for 2 years (incl. subdomains) — stops protocol-downgrade attacks.
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  # Stop browsers from MIME-sniffing a response into an unexpected type.
+  X-Content-Type-Options: nosniff
+  # Don't leak full referrer URLs to third-party providers.
+  Referrer-Policy: strict-origin-when-cross-origin
+  # Lock down powerful browser features we never use.
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=()
+  # Legacy clickjacking protection for our own pages (modern CSP below too).
+  X-Frame-Options: SAMEORIGIN
+  # Isolate cross-origin popups from controlling our window.
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+  # Only OUR pages can frame us (prevents the site being wrapped/clickjacked),
+  # while still allowing us to embed the external video players + comment widget.
+  Content-Security-Policy: frame-ancestors 'self'; object-src 'none'; base-uri 'self'; upgrade-insecure-requests
+
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+/sitemap-*.xml
+  Content-Type: application/xml; charset=utf-8
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
